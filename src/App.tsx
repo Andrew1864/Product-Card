@@ -1,6 +1,6 @@
 import "./index.css";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import NewsPage from "./news/Page";
+import NewsPage from "./news/page";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 

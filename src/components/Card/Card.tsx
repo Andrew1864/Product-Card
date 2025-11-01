@@ -14,8 +14,8 @@ export default function Card({
   isFavorite,
 }: CardProps) {
   return (
-    <div className="w-full mb-3 max-w-sm bg-white border border-gray-200 rounded-3xl shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
-      <div className="relative">
+    <div className="w-full mb-3 max-w-sm bg-white border border-gray-200 rounded-3xl shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer flex flex-col h-full">
+      <div className="relative flex-shrink-0">
         {img ? (
           <img
             className="w-full h-48 object-cover rounded-t-3xl"
@@ -37,12 +37,16 @@ export default function Card({
           {isFavorite ? "❤️" : "🤍"}
         </button>
       </div>
-      <div className="px-5 pb-5">
-        <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+      <div className="px-5 py-4 flex-1 flex flex-col">
+        <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-2">
           {title}
         </h5>
-        <p className="text-gray-600 text-sm mt-2 line-clamp-2">{description}</p>
-        <div className="flex items-center justify-between mt-4">
+        <p className="text-gray-600 text-sm line-clamp-3 flex-1">
+          {description}
+        </p>
+      </div>
+      <div className="px-5 pb-5 pt-4 mt-auto">
+        <div className="flex justify-center">
           <a
             href="#"
             className="text-white bg-black hover:bg-gray-800 focus:ring-4 focus:outline-none rounded-3xl focus:ring-blue-300 font-medium text-lg w-40 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-colors"
