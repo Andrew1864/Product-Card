@@ -10,7 +10,7 @@ const Header = () => {
     navigate("/newsPage");
   };
     const handleClickHome = () => {
-     navigate("/home");
+     navigate("/");
   };
 
   const handleFavoriteClick = () => {

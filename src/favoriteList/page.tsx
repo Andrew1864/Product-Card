@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import { useFavorites } from "../hooks/useFavorites";
 import Card from "../components/Card/Card";
 import type { NewsArticle } from "../store/API/NewsApi"; 
@@ -7,6 +9,9 @@ export default function FavoriteList() {
 
     return (
         <div className="container mx-auto px-4 py-8">
+            <Link to='/newsPage'>
+            <ArrowBackOutlinedIcon />
+            </Link>
             <h1 className="text-4xl font-bold text-center mb-8">Избранные новости:</h1>
             <div className="text-center mb-8">
                 <p className="text-gray-600 text-lg">

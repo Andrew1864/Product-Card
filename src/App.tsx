@@ -14,7 +14,7 @@ function App() {
         <main className="flex-1">
           <Routes>
             <Route path="/newsPage" element={<NewsPage />} />
-            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route path="/favoriteList" element={<FavoriteList />} />
           </Routes>
         </main>

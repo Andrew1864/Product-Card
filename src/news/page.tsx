@@ -1,4 +1,6 @@
 import { useState } from "react";
+import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
+import { Link } from "react-router-dom";
 import { useNews } from "../hooks/useNews";
 import Card from "../components/Card/Card";
 
@@ -23,6 +25,9 @@ export default function NewsPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <Link to='/'>
+      <ArrowBackOutlinedIcon />
+      </Link>
       <h1 className="text-4xl font-bold text-center mb-8">Новости</h1>
       {loading && page === 1 && (
         <div className="text-center text-gray-600 mb-6">
