@@ -9,6 +9,9 @@ const Header = () => {
   const handleClickNavigate = () => {
     navigate("/newsPage");
   };
+    const handleClickHome = () => {
+     navigate("/home");
+  };
 
   const handleFavoriteClick = () => {
     navigate("/favoriteList");
@@ -35,13 +38,13 @@ const Header = () => {
             >
               <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                 <li>
-                  <a
-                    href="#"
+                  <button
+                    onClick={handleClickHome}
                     className="block py-2 pr-4 pl-3 text-gray-700 rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white"
                     aria-current="page"
                   >
                     Home
-                  </a>
+                  </button>
                 </li>
                 <li>
                   <button
