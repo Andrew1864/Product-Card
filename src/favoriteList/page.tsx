@@ -5,7 +5,7 @@ import Card from "../components/Card/Card";
 import type { NewsArticle } from "../store/API/NewsApi"; 
 
 export default function FavoriteList() {
-    const { favorites, favoriteCount } = useFavorites();
+    const { favorites, favoriteCount, removeFromFavorites  } = useFavorites();
 
     return (
         <div className="container mx-auto px-4 py-8">
@@ -28,6 +28,7 @@ export default function FavoriteList() {
                         <Card
                             key={article.url}
                             article={article}
+                            onRemove={removeFromFavorites}
                         />
                     ))}
                 </div>
