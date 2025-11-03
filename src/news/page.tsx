@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
+import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 import { Link } from "react-router-dom";
 import { useNews } from "../hooks/useNews";
 import Card from "../components/Card/Card";
@@ -7,7 +7,7 @@ import Card from "../components/Card/Card";
 export default function NewsPage() {
   const [page, setPage] = useState(1);
 
-  const { news, loading, error, hasMore } = useNews(page);
+  const { news, loading, error, hasMore, removeArticle } = useNews(page);
 
   const loadMore = () => {
     if (hasMore && !loading) {
@@ -25,8 +25,8 @@ export default function NewsPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <Link to='/'>
-      <ArrowBackOutlinedIcon />
+      <Link to="/">
+        <ArrowBackOutlinedIcon />
       </Link>
       <h1 className="text-4xl font-bold text-center mb-8">Новости</h1>
       {loading && page === 1 && (
@@ -36,7 +36,11 @@ export default function NewsPage() {
       )}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         {news.map((article, index) => (
-          <Card key={`${article.url}-${index}`} article={article} />
+          <Card
+            key={`${article.url}-${index}`}
+            article={article}
+            onRemove={removeArticle}
+          />
         ))}
       </div>
       {!loading && news.length === 0 && (
