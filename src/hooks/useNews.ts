@@ -8,13 +8,17 @@ export const useNews = (page: number = 1) => {
   const [error, setError] = useState<string | null>(null);
   const [hasMore, setHasMore] = useState(true);
 
+  const removeArticle = (url: string) => {
+    setNews((prev) => prev.filter((article) => article.url !== url));
+  };
+
   useEffect(() => {
     const getNews = async () => {
       try {
         setLoading(true);
         setError(null);
 
-        const response = await fetchNews(page, 9, 'future');
+        const response = await fetchNews(page, 9, "future");
 
         setNews((prevNews) =>
           page === 1 ? response.data : [...prevNews, ...response.data]
@@ -29,5 +33,5 @@ export const useNews = (page: number = 1) => {
     };
     getNews();
   }, [page]);
-  return { news, loading, error, hasMore };
+  return { news, loading, error, hasMore, removeArticle };
 };
