@@ -3,15 +3,21 @@ import type { NewsArticle } from "../../store/API/NewsApi";
 
 interface CardProps {
   article: NewsArticle;
+  onRemove: (url: string) => void;
 }
 
-export default function Card({ article }: CardProps) {
+export default function Card({ article, onRemove }: CardProps) {
   const { toggleFavorites, isFavorite } = useFavorites();
   const favorites = isFavorite(article.url);
 
   const handleFavoriteClick = (event: React.MouseEvent) => {
     event.stopPropagation();
     toggleFavorites(article);
+  };
+
+  const handleRemoveClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    onRemove(article.url);
   };
 
   return (
@@ -49,15 +55,12 @@ export default function Card({ article }: CardProps) {
       </div>
       <div className="px-5 pb-5 pt-4 mt-auto">
         <div className="flex justify-center">
-          <a
-            href={article.url}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
             className="text-white bg-black hover:bg-gray-800 focus:ring-4 focus:outline-none rounded-3xl focus:ring-blue-300 font-medium text-lg w-40 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-colors"
-            onClick={(e) => e.stopPropagation()} // Чтобы не срабатывал клик карточки
+            onClick={handleRemoveClick}
           >
-            Читать
-          </a>
+            Удалить
+          </button>
         </div>
       </div>
     </div>
