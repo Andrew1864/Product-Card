@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useFavorites } from "../../hooks/useFavorites";
 import type { NewsArticle } from "../../store/API/NewsApi";
 
@@ -21,7 +22,7 @@ export default function Card({ article, onRemove }: CardProps) {
   };
 
   return (
-    <div className="w-full mb-3 max-w-sm bg-white border border-gray-200 rounded-3xl shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer flex flex-col h-full">
+    <div className="w-full mb-3 max-w-sm bg-white border border-gray-200 rounded-3xl shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col h-full">
       <div className="relative flex-shrink-0">
         {article.image ? (
           <img
@@ -36,7 +37,7 @@ export default function Card({ article, onRemove }: CardProps) {
         )}
         <button
           onClick={handleFavoriteClick}
-          className={`absolute top-0 right-0 m-2 p-2 rounded-full z-10 transition-colors ${
+          className={`absolute top-2 right-2 p-2 rounded-full shadow transition-colors z-10 ${
             favorites
               ? "text-red-500 bg-white"
               : "text-white bg-black bg-opacity-50 hover:bg-opacity-70"
@@ -44,8 +45,10 @@ export default function Card({ article, onRemove }: CardProps) {
         >
           {favorites ? "❤️" : "🤍"}
         </button>
+        <Link to={`/news/${article.id}`} className="absolute inset-0 z-0" />
       </div>
-      <div className="px-5 py-4 flex-1 flex flex-col">
+
+      <div className="px-5 py-4 flex-1 flex flex-col cursor-pointer">
         <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white mb-2">
           {article.title}
         </h5>
@@ -53,15 +56,13 @@ export default function Card({ article, onRemove }: CardProps) {
           {article.description || "No description available"}
         </p>
       </div>
-      <div className="px-5 pb-5 pt-4 mt-auto">
-        <div className="flex justify-center">
-          <button
-            className="text-white bg-black hover:bg-gray-800 focus:ring-4 focus:outline-none rounded-3xl focus:ring-blue-300 font-medium text-lg w-40 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-colors"
-            onClick={handleRemoveClick}
-          >
-            Удалить
-          </button>
-        </div>
+      <div className="px-5 pb-5 pt-4 mt-auto flex justify-center items-center">
+        <button
+          onClick={handleRemoveClick}
+          className="text-white bg-black hover:bg-gray-800 focus:ring-4 focus:outline-none rounded-3xl focus:ring-blue-300 font-medium text-lg w-40 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition-colors"
+        >
+          Удалить
+        </button>
       </div>
     </div>
   );
