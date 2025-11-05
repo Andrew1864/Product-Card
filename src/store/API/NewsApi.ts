@@ -1,4 +1,5 @@
 export interface NewsArticle {
+  id: number;
   title: string;
   description: string;
   url: string;
@@ -60,7 +61,8 @@ export async function fetchNews(
     }
     // Вместо MediaStack
     const transformedData: NewsApiResponse = {
-      data: data.articles.map((article: any) => ({
+      data: data.articles.map((article: any, index: number) => ({
+        id: index + 1,
         title: article.title,
         description: article.description,
         url: article.url,
