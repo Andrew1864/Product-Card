@@ -2,6 +2,7 @@ import "./index.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NewsPage from "./news/page";
 import FavoriteList from "./favoriteList/page";
+import DetailsNews from "./news/[id]/page";
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import Footer from "./components/Footer/Footer";
@@ -14,6 +15,7 @@ function App() {
         <main className="flex-1">
           <Routes>
             <Route path="/newsPage" element={<NewsPage />} />
+            <Route path="/news/:id" element={<DetailsNews />} />
             <Route path="/" element={<Home />} />
             <Route path="/favoriteList" element={<FavoriteList />} />
           </Routes>
