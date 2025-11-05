@@ -31,7 +31,7 @@ export default function NewsPage() {
       <h1 className="text-4xl font-bold text-center mb-8">Новости</h1>
       {loading && page === 1 && (
         <div className="text-center text-gray-600 mb-6">
-          Loading news about future technologies...
+          Загрузка новостей....
         </div>
       )}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
@@ -45,12 +45,8 @@ export default function NewsPage() {
       </div>
       {!loading && news.length === 0 && (
         <div className="text-center text-gray-500 py-12">
-          <p className="text-xl mb-2">
-            No news found about future technologies
-          </p>
-          <p className="text-sm">
-            Try refreshing the page or check your internet connection
-          </p>
+          <p className="text-xl mb-2">Новости не найдены</p>
+          <p className="text-sm">Попробуйте снова или проверьте интернет</p>
         </div>
       )}
       {hasMore && news.length > 0 && (
